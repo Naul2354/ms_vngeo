@@ -1,0 +1,54 @@
+spring:
+    datasource:
+        url: jdbc:mysql://db.nguyenductho.pro:3306/ms_vngeo?zeroDateTimeBehavior=convertToNull&useUnicode=yes&characterEncoding=UTF-8&userSSL=false
+        username: vngeo
+        password: vngeo123
+        driver-class: com.mysql.cj.jdbc.Driver
+        initialization-mode: always
+    jpa:
+        hibernate:
+            ddl-auto: none
+            temp:
+                use_jdbc_metadata_defaults: "false"
+            show-sql: "true"
+        properties:
+            hibernate:
+                enable_lazy_load_no_trans: "true"
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    serialization:
+        write_dates_as_timestamps: "false"
+    profiles:
+        active: prod
+    servlet:
+        multipart:
+            max-request-size: 500MB
+            max-file-size: 500MB
+            location: /opt/app/ms_vngeo/tmp
+    jackson:
+        time-zone: Asia/Ho_Chi_Minh
+        serialization:
+            fail-on-empty-beans: "false"
+redis:
+    port: "6379"
+    host: cache.nguyenductho.pro
+server:
+    address: 0.0.0.0
+    port: "8080"
+    sessionTimeout: 30
+acl:
+    whitelist: any
+logging:
+    level:
+        org:
+            hibernate: INFO
+            springframework:
+                nodeValue: INFO
+                web: INFO
+        guru:
+            springframework:
+                controllers: INFO
+    pattern:
+        file: "%d %-5level [%thread] %logger : %msg%n"
+        console: "%d %-5level %logger : %msg%n"
+    file:
+        name: logs/dev_app.log
