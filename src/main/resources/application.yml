@@ -5,6 +5,7 @@ spring:
         password: vngeo123
         driver-class: com.mysql.cj.jdbc.Driver
         initialization-mode: always
+        continue-on-error: "true"
     jpa:
         hibernate:
             ddl-auto: none
